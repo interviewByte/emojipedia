@@ -1,20 +1,17 @@
 import React from "react";
 
-function EmojiCard(props){
-    return(
-        <div>
-           
-            <div className="main-card"> 
-                <div className="pavan">
-                    <div className="card">
-                       <span>{props.emoji}</span>
-                       <h2>{props.title}</h2>
-                       <p>{props.about}</p>
-                    </div>
-                </div>
-            </div>
-        </div>    
-    )
-};
+function EmojiCard(props) {
+  return (
+    <div className="term">
+      <dt>
+        <span className="emoji" role="img" aria-label="Tense Biceps">
+          {props.emoji}
+        </span>
+        <span>{props.name}</span>
+      </dt>
+      <dd>{props.description}</dd>
+    </div>
+  );
+}
 
 export default EmojiCard;

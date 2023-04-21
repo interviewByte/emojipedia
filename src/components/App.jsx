@@ -1,60 +1,43 @@
 import React from "react";
-import EmojiCard from "./EmojiCard";
-import emoji from "../emoji";
-function App(){
-    function abc(pavan){
-        return(
-             <EmojiCard
-             id={pavan.id}
-             emoji={pavan.emoji}
-             title={pavan.title}
-             about={pavan.about}
-            />
+import Entry from "./EmojiCard";
+import emojipedia from "../emoji";
 
-        )
-    }
-    return(
-       <div>
-           <div className="top">
-               <h1>emojipedia</h1>
-            </div>
-            {emoji.map(abc)}
-          {/* <EmojiCard
-           emoji={emoji[0].emoji}
-           title={emoji[0].title}
-           about={emoji[0].about} 
-          />
-          <EmojiCard
-           emoji={emoji[1].emoji}
-           title={emoji[1].title}
-           about={emoji[1].about}
-          />
-          <EmojiCard
-           emoji={emoji[2].emoji}
-           title={emoji[2].title}
-           about={emoji[2].about}
-          />
-          <EmojiCard
-           emoji={emoji[3].emoji}
-           title={emoji[3].title}
-           about={emoji[3].about}
-          />
-          <EmojiCard
-           emoji={emoji[4].emoji}
-           title={emoji[4].title}
-           about={emoji[4].about}
-          />
-           <EmojiCard
-           emoji={emoji[5].emoji}
-           title={emoji[5].title}
-           about={emoji[5].about}
-          /> */}
-       </div>
-        
-        
-    )
+//1. Extract the repeated parts of the App into a Entry component.
+//2. Use props to make the Entry component render different data.
+//3a. Import the emojipedia constant.
+//3b. Map through the emojipedia array and render Entry components.
+
+//Emojipedia has 3 entries, so createEntry gets called 3 times.
+//Each time, it passes 1 item from the emojipedia array as a var called emojiTerm.
+
+//var emojiTerm = {
+//   id: 1,
+//   emoji: "💪",
+//   name: "Tense Biceps",
+//   meaning:
+//     "“You can do that!” or “I feel strong!” Arm with tense biceps. Also used in connection with doing sports, e.g. at the gym."
+// }
+
+function createEntry(emojiTerm) {
+  return (
+    <Entry
+      key={emojiTerm.id}
+      emoji={emojiTerm.emoji}
+      name={emojiTerm.title}
+      description={emojiTerm.about}
+    />
+  );
 }
 
-
-
+function App() {
+  return (
+    <div>
+      <h1>
+        <span>emojipedia</span>
+      </h1>
+      <dl className="dictionary">{emojipedia.map(createEntry)}</dl>
+    </div>
+  );
+}
 export default App;
+
